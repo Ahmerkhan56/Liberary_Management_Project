@@ -1,9 +1,7 @@
 package pkg_book;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.ListIterator;
-
 public class BookManager {
     ObjectOutputStream oos_book=null;
     ObjectInputStream ois_book=null;
@@ -18,6 +16,12 @@ public class BookManager {
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+    }
+    public void listBookBySubject(String subject){
+        for(Book book:book_list){
+            if(book.getSubject().equals(subject))
+                System.out.println(book);
         }
     }
     public void addABook(Book book){
