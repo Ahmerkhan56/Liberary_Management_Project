@@ -1,6 +1,6 @@
 package pkg_person;
 
-public class Student extends Person{
+public class Student extends Person {
     private int rollNo;
     private int std;
     private String division;

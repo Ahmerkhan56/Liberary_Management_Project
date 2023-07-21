@@ -39,7 +39,7 @@ public class StudentManager {
         }
     }
     public boolean deleteStudent(int delete_rollNo){
-        ListIterator<Student> student_Iterator= (ListIterator<Student>) student_list.iterator();
+        ListIterator<Student> student_Iterator= (ListIterator<Student>) student_list.listIterator();
         while (student_Iterator.hasNext()){
             Student student=student_Iterator.next();
             if(student.getRollNo()==delete_rollNo){
@@ -49,5 +49,30 @@ public class StudentManager {
         }
         return false;
     }
-
+    public boolean updateStudent(int update_roll_number,String name, String emailId, String phoneNumber, String address, String dob, int std, String division){
+        ListIterator<Student> student_Iterator= (ListIterator<Student>) student_list.listIterator();
+        while (student_Iterator.hasNext()){
+            Student student=student_Iterator.next();
+            if(student.getRollNo()==update_roll_number){
+                student.setName(name);
+                student.setAddress(address);
+                student.setStd(std);
+                student.setDivision(division);
+                student.setEmailId(emailId);
+                student.setPhoneNumber(phoneNumber);
+                return true;
+            }
+        }
+        return false;
+    }
+    public void writeToFile(){
+        try{
+            oos_student=new ObjectOutputStream(new FileOutputStream(student_file));
+            oos_student.writeObject(student_list);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -52,4 +52,12 @@ public class BookTransactionManager {
             System.out.println(book_tans_list);
         }
     }
+    public void writeToFile(){
+        try {
+            oos_bookTransaction=new ObjectOutputStream(new FileOutputStream(bookTransaction_file));
+            oos_bookTransaction.writeObject(book_transaction_list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

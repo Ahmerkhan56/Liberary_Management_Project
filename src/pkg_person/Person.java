@@ -1,6 +1,7 @@
 package pkg_person;
+import java.io.Serializable;
 import java.util.regex.Pattern;
-abstract public class Person {
+abstract public class Person  implements Serializable {
     protected String name;
     protected String emailId;
     protected String phoneNumber;

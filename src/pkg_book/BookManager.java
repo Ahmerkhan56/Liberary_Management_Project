@@ -22,6 +22,8 @@ public class BookManager {
         for(Book book:book_list){
             if(book.getSubject().equals(subject))
                 System.out.println(book);
+            else
+                System.out.println("Book Not Found");
         }
     }
     public void addABook(Book book){
@@ -40,7 +42,7 @@ public class BookManager {
         return null;
     }
     public boolean deleteBook(int delete_isbn){
-        ListIterator<Book> book_iterator= (ListIterator<Book>) book_list.iterator();
+        ListIterator<Book> book_iterator= (ListIterator<Book>) book_list.listIterator();
         while (book_iterator.hasNext()){
             Book book=book_iterator.next();
             if(book.getIsbn()==delete_isbn){
@@ -50,5 +52,29 @@ public class BookManager {
         }
         return false;
 
+    }
+    public boolean updateBook(int update_isbn, String title, String author, String publisher, int edition, String subject, int available_quantity){
+        ListIterator<Book> book_iterator= (ListIterator<Book>) book_list.listIterator();
+        while (book_iterator.hasNext()){
+            Book book=book_iterator.next();
+            if(book.getIsbn()==update_isbn){
+                book.setTitle(title);
+                book.setAuthor(author);
+                book.setPublisher(publisher);
+                book.setEdition(edition);
+                book.setSubject(subject);
+                book.setAvailable_quantity(available_quantity);
+                return true;
+            }
+        }
+        return false;
+    }
+    public void writeToFile() {
+        try {
+            oos_book=new ObjectOutputStream(new FileOutputStream(book_file));
+            oos_book.writeObject(book_list);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

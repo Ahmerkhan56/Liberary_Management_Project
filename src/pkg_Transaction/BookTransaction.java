@@ -1,6 +1,8 @@
 package pkg_Transaction;
 
-public class BookTransaction {
+import java.io.Serializable;
+
+public class BookTransaction implements Serializable {
     private int isbn;
     private int rollNo;
     private String issueDate;
