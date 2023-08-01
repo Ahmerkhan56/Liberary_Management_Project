@@ -292,6 +292,10 @@ public class Main {
                              System.out.println("Book not found");
                          }
                          break;
+                     case 31:
+                         System.out.println("All the Transactions are ");
+                         btm.showAll();
+                         break;
                      case 99:
                          System.out.println("Thanks for using Library");
                          break;
@@ -305,5 +309,6 @@ public class Main {
         }while (choice!=3);
         sm.writeToFile();
         bm.writeToFile();
+        btm.writeToFile();
     }
 }
